@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.28307.106
+VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NonogramPortalApi", "NonogramPortalApi\NonogramPortalApi.csproj", "{280A56EA-877A-43D8-940E-61541B084F95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NonogramPortalApi", "NonogramPortalApi\NonogramPortalApi.csproj", "{E712F80A-3B73-4A01-9D7B-507481CD9E3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{280A56EA-877A-43D8-940E-61541B084F95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{280A56EA-877A-43D8-940E-61541B084F95}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{280A56EA-877A-43D8-940E-61541B084F95}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{280A56EA-877A-43D8-940E-61541B084F95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E712F80A-3B73-4A01-9D7B-507481CD9E3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E712F80A-3B73-4A01-9D7B-507481CD9E3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E712F80A-3B73-4A01-9D7B-507481CD9E3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E712F80A-3B73-4A01-9D7B-507481CD9E3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {A0D1BA67-2991-4D29-9BED-0FA9A4A7C9B2}
+		SolutionGuid = {0BEA658B-23D4-48F9-998A-6F82396C91CC}
 	EndGlobalSection
 EndGlobal
