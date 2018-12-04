@@ -14,6 +14,7 @@ namespace NonogramPortalApi.DataBase.Entities
         public int Dimension { get; set; }
         public DateTime CreationDate { get; set; }
         public string Link { get; set; }
+        public int[] RuleIndexes { get; set; }
         public byte[] Rules { get; set; }
         public byte[] Fields { get; set; }
 

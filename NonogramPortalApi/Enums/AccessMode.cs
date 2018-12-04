@@ -4,7 +4,6 @@
     {
         Private,
         Link,
-        Public,
         Recreational,
         Ranking
     }

@@ -18,11 +18,6 @@ namespace NonogramPortalApi.Areas.HelpPage.Controllers
             Configuration = GlobalConfiguration.Configuration;
         }
 
-        //public HelpController(HttpConfiguration config)
-        //{
-        //    Configuration = config;
-        //}
-
         public HttpConfiguration Configuration { get; private set; }
 
         public ActionResult Index()
