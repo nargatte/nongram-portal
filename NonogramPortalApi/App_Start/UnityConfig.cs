@@ -16,32 +16,29 @@ namespace NonogramPortalApi
 {
     public static class UnityConfig
     {
+        private static UnityContainer _container;
+
+        private static UnityContainer Container
+        {
+            get
+            {
+                if (_container == null)
+                {
+                    _container = new UnityContainer();
+                    RegisterTypes(_container);
+                }
+                return _container;
+            }
+        }
+
         public static void RegisterComponents()
         {
-            var container = new UnityContainer();
-
-            // register all your components with the container here
-            // it is NOT necessary to register your controllers
-
-            // e.g. container.RegisterType<ITestService, TestService>();
-
-            RegisterTypes(container);
-
-            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+            DependencyResolver.SetResolver(new UnityDependencyResolver(Container));
         }
 
         public static UnityResolver GetResorver()
         {
-            var container = new UnityContainer();
-
-            // register all your components with the container here
-            // it is NOT necessary to register your controllers
-
-            // e.g. container.RegisterType<ITestService, TestService>();
-
-            RegisterTypes(container);
-
-            return new UnityResolver(container);
+            return new UnityResolver(Container);
         }
 
         private static void RegisterTypes(UnityContainer container)

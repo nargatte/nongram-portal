@@ -17,10 +17,5 @@ namespace NonogramPortalApi.DataBase
         public IDbSet<Nonogram> Nonograms { get; set; }
         public IDbSet<Dimension> Dimensions { get; set; }
         public IDbSet<Colour> Colours { get; set; }
-
-        public static PortalDbContext Create()
-        {
-            return new PortalDbContext();
-        }
     }
 }
