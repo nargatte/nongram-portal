@@ -24,27 +24,13 @@ namespace NonogramPortalApi.Controllers
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
-        private UserManager<User> _userManager;
 
         public AccountController(UserManager<User> userManager)
         {
-            _userManager = userManager;
+            UserManager = userManager;
         }
 
-        public UserManager<User> UserManager
-        {
-            get
-            {
-                return _userManager;
-                // ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
-
-        //public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
+        public UserManager<User> UserManager { get; }
 
         // GET api/Account/UserInfo
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
@@ -323,7 +309,7 @@ namespace NonogramPortalApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new User() { UserName = model.Email, Email = model.Email };
+            var user = new User() { UserName = model.Nick, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -370,10 +356,9 @@ namespace NonogramPortalApi.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && _userManager != null)
+            if (disposing)
             {
-                _userManager.Dispose();
-                _userManager = null;
+                UserManager?.Dispose();
             }
 
             base.Dispose(disposing);

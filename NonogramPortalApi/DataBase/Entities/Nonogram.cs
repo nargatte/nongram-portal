@@ -8,6 +8,7 @@ namespace NonogramPortalApi.DataBase.Entities
     {
         public int Id { get; set; }
 
+        public string Name { get; set; }
         public AccessMode AccessMode { get; set; }
         public int Difficulty { get; set; }
         public int Size { get; set; }

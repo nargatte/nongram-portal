@@ -6,7 +6,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using NonogramPortalApi.DataBase;
 using NonogramPortalApi.DataBase.Entities;
@@ -14,6 +13,7 @@ using NonogramPortalApi.DataBase.Entities;
 namespace NonogramPortalApi.Controllers
 {
     [System.Web.Http.Authorize]
+    [System.Web.Http.RoutePrefix("api")]
     public class ValuesController : ApiController
     {
         private IPortalDbContext _dbContext;
@@ -25,12 +25,26 @@ namespace NonogramPortalApi.Controllers
             _userManager = userManager;
         }
 
+        [System.Web.Http.HttpGet]
+        [System.Web.Http.Route("Nonograms")]
+        public Task<string[]> GetNonograms()
+        {
+            string id = User.Identity.GetUserId();
+             return _dbContext.Nonograms.Where(n => n.UserId == id).OrderBy(n => n.Name)
+                .Select(n => n.Name).ToArrayAsync();
+        }
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("Nonogram")]
+        public async Task PostNonogram(string name)
+        {
+            var n = new Nonogram(){UserId = User.Identity.GetUserId(), CreationDate = DateTime.Now, Name = name};
+            _dbContext.Nonograms.Add(n);
+            await _dbContext.SaveChangesAsync();
+        }
+
         // GET api/values
         public async Task<string[]> Get()
         {
-            string s = User.Identity.GetUserId();
-            var nonogram = await _dbContext.Nonograms.FirstAsync(n => n.UserId == s);
-
             return new string[] { "value1", "value2" };
         }
 
