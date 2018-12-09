@@ -1,8 +1,9 @@
 ﻿namespace NonogramPortalApi.DataBase.Entities
 {
-    public class Colour
+    public class Color
     {
         public int Id { get; set; }
+        public int Index { get; set; }
 
         public byte Red { get; set; }
         public byte Green { get; set; }

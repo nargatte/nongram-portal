@@ -11,10 +11,9 @@ namespace NonogramPortalApi.DataBase.Entities
         public string Name { get; set; }
         public AccessMode AccessMode { get; set; }
         public int Difficulty { get; set; }
-        public int Size { get; set; }
-        public int Dimension { get; set; }
         public DateTime CreationDate { get; set; }
         public string Link { get; set; }
+        public int Size { get; set; }
         public int[] RuleIndexes { get; set; }
         public byte[] Rules { get; set; }
         public byte[] Fields { get; set; }
@@ -25,6 +24,6 @@ namespace NonogramPortalApi.DataBase.Entities
         public virtual ICollection<Game> Games { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Dimension> Dimensions { get; set; }
-        public virtual ICollection<Colour> Colours { get; set; }
+        public virtual ICollection<Color> Colors { get; set; }
     }
 }

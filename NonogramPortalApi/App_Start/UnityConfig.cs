@@ -11,6 +11,8 @@ using Microsoft.Owin.Security;
 using Unity.Injection;
 using System.Web;
 using NonogramPortalApi.Providers;
+using NonogramPortalApi.Repositories;
+using System;
 
 namespace NonogramPortalApi
 {
@@ -50,6 +52,8 @@ namespace NonogramPortalApi
             container.RegisterType<UserManager<User>, ApplicationUserManager>();
             container.RegisterType<IAuthenticationManager>(new InjectionFactory(c =>
                 HttpContext.Current.GetOwinContext().Authentication));
+            container.RegisterType<NonogramRepository>();
+            container.RegisterType<Random>();
             //container.RegisterType<ApplicationSignInManager>();
         }
     }

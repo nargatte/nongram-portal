@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
 
-        public int Size { get; set; }
+        public byte Size { get; set; }
         public int Index { get; set; }
 
         public int NonogramId { get; set; }

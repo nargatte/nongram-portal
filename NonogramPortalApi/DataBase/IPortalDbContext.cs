@@ -10,7 +10,7 @@ namespace NonogramPortalApi.DataBase
         IDbSet<Game> Games { get; set; }
         IDbSet<Nonogram> Nonograms { get; set; }
         IDbSet<Dimension> Dimensions { get; set; }
-        IDbSet<Colour> Colours { get; set; }
+        IDbSet<Color> Colors { get; set; }
 
         Task<int> SaveChangesAsync();
     }

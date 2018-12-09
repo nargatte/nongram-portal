@@ -7,6 +7,6 @@
         BySize,
         ByNumberOfPlays,
         ByAverageTimeOfPlay,
-        ByAddDate
+        ByCreationDate
     }
 }

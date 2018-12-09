@@ -9,20 +9,24 @@ using System.Web.Http;
 using Microsoft.AspNet.Identity;
 using NonogramPortalApi.DataBase;
 using NonogramPortalApi.DataBase.Entities;
+using NonogramPortalApi.Dtos;
+using NonogramPortalApi.Models;
+using NonogramPortalApi.Repositories;
 
 namespace NonogramPortalApi.Controllers
 {
-    [System.Web.Http.Authorize]
     [System.Web.Http.RoutePrefix("api")]
     public class ValuesController : ApiController
     {
-        private IPortalDbContext _dbContext;
-        private UserManager<User> _userManager;
+        private readonly IPortalDbContext _dbContext;
+        private readonly UserManager<User> _userManager;
+        private readonly NonogramRepository _nonogramRepository;
 
-        public ValuesController(IPortalDbContext dbContext, UserManager<User> userManager)
+        public ValuesController(IPortalDbContext dbContext, UserManager<User> userManager, NonogramRepository nonogramRepository)
         {
             _dbContext = dbContext;
             _userManager = userManager;
+            _nonogramRepository = nonogramRepository;
         }
 
         [System.Web.Http.HttpGet]
@@ -45,6 +49,20 @@ namespace NonogramPortalApi.Controllers
         // GET api/values
         public async Task<string[]> Get()
         {
+            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == "admin@np.pl");
+            NonogramDto nonogramDto = new NonogramDto();
+            nonogramDto.Name = "Name";
+            nonogramDto.UserId = user.Id;
+            nonogramDto.Dimensions = new byte[] {1,4,6,1};
+            nonogramDto.CreationDate = DateTime.Now;
+            nonogramDto.Colors = new[]
+            {
+                new ColourDto() {Red = 1, Green = 1, Blue = 1},
+                new ColourDto() {Red = 2, Green = 2, Blue = 2},
+            };
+
+            await _nonogramRepository.AddNonogram(nonogramDto);
+
             return new string[] { "value1", "value2" };
         }
 

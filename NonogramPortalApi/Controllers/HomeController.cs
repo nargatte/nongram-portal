@@ -10,7 +10,8 @@ namespace NonogramPortalApi.Controllers
     {
         public ActionResult Index()
         {
-            return Redirect("help");
+           // return Redirect("~/help");
+            return Redirect("~/api/values");
         }
     }
 }
