@@ -15,7 +15,6 @@ namespace NonogramPortalApi.Dtos
 
         public int NumberOfPlays { get; set; }
         public int NumberOfWins { get; set; }
-        public int AverageMinutesOfPlay { get; set; }
 
         public DateTime LastSaveDate { get; set; }
         public DateTime? EndDate { get; set; }

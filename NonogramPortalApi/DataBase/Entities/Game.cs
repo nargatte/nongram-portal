@@ -9,7 +9,7 @@ namespace NonogramPortalApi.DataBase.Entities
         public DateTime StartDate { get; set; }
         public DateTime LastSaveDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public int RateStars { get; set; }
+        public int? Rate { get; set; }
         public byte[] Fields { get; set; }
 
         public int NonogramId { get; set; }

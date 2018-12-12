@@ -6,7 +6,6 @@
         ByDifficulty,
         BySize,
         ByNumberOfPlays,
-        ByAverageTimeOfPlay,
         ByCreationDate
     }
 }

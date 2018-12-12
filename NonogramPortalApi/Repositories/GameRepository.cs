@@ -30,11 +30,11 @@ namespace NonogramPortalApi.Repositories
             return game.Id;
         }
 
-        public async Task SaveProgress(int id, byte[] fields)
+        public async Task SaveProgress(int nonogramId, byte[] fields)
         {
-            Game game = await _dbContext.Games.FirstOrDefaultAsync(g => g.Id == id);
+            Game game = await _dbContext.Games.FirstOrDefaultAsync(g => g.NonogramId == nonogramId);
             if(game == null)
-                throw new Exception($"Game with id {id} cannot be found");
+                throw new Exception($"Game with nonogramId {nonogramId} cannot be found");
             game.Fields = fields;
             game.LastSaveDate = DateTime.Now;
             await _dbContext.SaveChangesAsync();
