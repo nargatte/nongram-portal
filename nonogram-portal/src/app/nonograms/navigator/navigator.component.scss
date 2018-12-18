@@ -1,0 +1,22 @@
+ul {
+    padding: 0;
+    margin: 0;
+}
+li {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 30px;
+    width: 40px;
+    height: 30px;
+    border: 1px solid black;
+    font-weight: bold;
+    text-align: center;
+    margin: 1px;
+    background-color: #dadada;
+}
+div {
+    margin: auto;
+}
+.select {
+    background-color: #c0c0c0;
+}

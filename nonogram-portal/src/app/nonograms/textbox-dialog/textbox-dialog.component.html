@@ -1,0 +1,9 @@
+<input #textbox type="text"
+[style.display]="myShow ? 'block' : 'none'"
+[style.top]="staticY - 25 + 'px'"
+[style.left]="staticX + 'px'"
+[ngModel]="value"
+(ngModelChange)="valueChange.emit($event)"
+(blur)="myShow = false; showChange.emit(false)"
+(keyup)="onKeyup($event)"
+ />

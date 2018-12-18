@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Nonogram2dComponent } from './nonogram2d.component';
+import { NonogramMinimapComponent } from './nonogram-minimap.component';
 
-describe('Nonogram2dComponent', () => {
-  let component: Nonogram2dComponent;
-  let fixture: ComponentFixture<Nonogram2dComponent>;
+describe('NonogramMinimapComponent', () => {
+  let component: NonogramMinimapComponent;
+  let fixture: ComponentFixture<NonogramMinimapComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Nonogram2dComponent ]
+      declarations: [ NonogramMinimapComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Nonogram2dComponent);
+    fixture = TestBed.createComponent(NonogramMinimapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

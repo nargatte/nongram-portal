@@ -1,0 +1,9 @@
+<ul>
+  <li *ngFor="let position of navigatorArray; let idx = index"
+  [class.select]="idx == select"
+  >
+    <div *ngIf="dimensionAsX != idx && dimensionAsY != idx">{{position+1}}/{{lengths[idx]}}</div>
+    <div *ngIf="dimensionAsX == idx">(X)</div>
+    <div *ngIf="dimensionAsY == idx">(Y)</div>
+  </li>
+</ul>

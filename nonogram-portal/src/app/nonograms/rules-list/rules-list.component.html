@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let dimRules of rules; let idx = index">
+    <span [class.backlighted]="backlighted.indexOf(idx) != -1">Wymiar {{idx+1}}:</span>
+      <div *ngFor="let rule of dimRules; let idx2 = index"
+      [style.color]="nonogramNd.colors[rule.color].stringFormat"
+      (click)="ruleClick.emit([idx, idx2])">
+        {{rule.value}}
+      </div>
+      <div *ngIf="canAdd == true" class="addNewRule" (click)="ruleClick.emit([idx, null])">+</div>
+  </li>
+</ul>

@@ -1,0 +1,11 @@
+<div id="relative-container">
+    <div *ngFor="let r of ruleDivs" [ngClass]="'rule'" [style.width]="fieldSize + 'px'" [style.height]="fieldSize + 'px'"
+        [style.top]="r.y*fieldSize+2+'px'" [style.left]="r.x*fieldSize+2+'px'" [style.font-size]="fieldSize*0.6 + 'px'"
+        [style.color]="'rgb('+r.color.red*255+','+r.color.green*255+','+r.color.blue*255+')'">
+        <div class="rule-content">
+            {{r.value}}
+        </div>
+    </div>
+</div>
+<canvas #canvas (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+</canvas>

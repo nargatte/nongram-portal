@@ -1,0 +1,31 @@
+.full {
+    min-width: 1500px;
+}
+.column {
+    float: left;
+}
+.big {
+    max-width: 600px;
+}
+.last {
+    margin-left: 30px;
+}
+.nonogram2d {
+    margin-top: 34px;
+    margin-left: 3px;
+    height: 410px;
+    width: 610px;
+    overflow: auto;
+}
+input[type=range] {
+    width: 600px;
+}
+app-nonogram-minimap {
+    position: relative;
+    right: 5px;
+}
+#rulesUpdate {
+    position: relative;
+    right: 945px;
+    top: 5px;
+}

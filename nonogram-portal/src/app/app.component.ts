@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
-import { LoggedUserService, LogEvent, LogType } from 'src/services/logged-user.service';
-import { HttpClient } from '@angular/common/http';
+import { Component, ViewChild, AfterContentInit, ContentChild } from '@angular/core';
+import { Nonogram2dComponent } from 'src/app/nonograms/nonogram2d/Nonogram2dComponent';
+import { Nonogram2d } from 'src/models/Nonogram2d';
+import { Color } from 'src/models/Color';
+import { Field } from 'src/models/Field';
+import { RuleItem } from 'src/models/RuleItem';
 
 @Component({
   selector: 'app-root',
@@ -10,76 +13,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   title = 'nonogram-portal';
 
-  lnick: string = '';
-  lpassword: string = '';
-  lresponse: string = '';
-  lred: boolean = false;
-
-  onLogIn()
-  {
-    this.loggedUser.LogIn(this.lnick, this.lpassword);
-    this.lnick = '';
-    this.lpassword = '';
+  constructor() {
   }
 
-  onLogOut()
-  {
-    this.loggedUser.LogOut();
-  }
-
-  rnick: string = '';
-  rpassword: string = '';
-  rmail: string = '';
-  rresponse: string = '';
-
-  onSignIn()
-  {
-    let r = new Register();
-    r.Email = this.rmail;
-    r.Nick = this.rnick;
-    r.Password = this.rpassword;
-    this.http.post("api/account/register", r).subscribe(() => {
-      this.rresponse = `Pomyślnie zarejestrowano konto ${r.Nick}`;
-      this.rnick = '';
-      this.rpassword = '';
-      this.rmail = '';
-    },e =>{
-      this.rresponse = e["error"]["ModelState"][""][0];
-    })
-  }
-
-  aname: string = '';
-
-  onAdd() {
-    this.http.post(`api/nonogram?name=${this.aname}`, null).subscribe(()=>this.updateNonograms());
-  }
-
-  nonograms: string[];
-
-  updateNonograms() {
-    this.http.get("api/nonograms").subscribe((l: string[]) => this.nonograms = l);
-  }
-
-  constructor(private loggedUser: LoggedUserService, private http: HttpClient) {
-    loggedUser.GetLogInEmitter().subscribe((i: LogEvent) => {
-      this.lred = false;
-      this.nonograms = [];
-      if(i.type == LogType.LogIn){
-        this.lresponse = `Witaj ${i.userName}`;
-        this.updateNonograms();
-      }else if(i.type == LogType.LogOut){
-        this.lresponse = "Wylogowano";
-      }else{
-        this.lresponse = "Złe hasło lub login";
-        this.lred = true;
-      }
-    })
-  }
-
-}
-
-class Register {
-  public Email: string
-  public Password: string
-  public Nick: string
 }

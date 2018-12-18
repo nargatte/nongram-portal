@@ -1,0 +1,45 @@
+$size: 20px;
+* {
+    font-size: $size
+}
+li {
+    list-style-type: none;
+    display: block;
+    height: $size + 6;
+    line-height: $size + 6;
+}
+ul {
+    padding: 0;
+}
+div {
+    font-weight: bold;
+    display: inline-block;
+    border: 1px solid #8f8f8f;
+    margin: 2px;
+    width: $size;
+    height: $size;
+    text-align: center;
+    line-height: $size;
+    background-color: #dadada;
+    cursor: context-menu;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+div:hover {
+    background-color: #c0c0c0
+}
+div.addNewRule {
+    color: gray;
+}
+span.backlighted {
+    color: brown;
+}
+span {
+    display: inline-block;
+    width: 100px;
+}

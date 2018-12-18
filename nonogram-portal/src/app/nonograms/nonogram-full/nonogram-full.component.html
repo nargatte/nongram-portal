@@ -1,0 +1,94 @@
+<div class="full">
+    <input type="button" value="Akualizuj zasady" id="rulesUpdate"
+    (click)="nonogramnd.updateRules(); updateNonogram2d();" />
+    <div class="column big">
+        <app-navigator
+        [(navigatorArray)]="navigatorArray"
+        (anyChange)=" 
+        this.tokenX = null;
+        this.tokenY = null;
+        this.tokenNd = null;
+        onFieldSelected(selectedField);
+        updateNonogram2d()"
+        [lengths]="nonogramnd.dimensions"
+        [(dimensionAsX)]="dimensionAsX"
+        [(dimensionAsY)]="dimensionAsY"
+        >
+        </app-navigator>
+        <app-nonogram3d-view
+        #nonogram3dRef
+        [model]="nonogramnd"
+        [navigatorArray]="navigatorArray"
+        [xFieldsLimit]="xFieldsLimit"
+        [yFieldsLimit]="yFieldsLimit"
+        [xOffset]="xOffset"
+        [yOffset]="yOffset"
+        [dimensionAsX]="dimensionAsX"
+        [dimensionAsY]="dimensionAsY"
+        >
+        </app-nonogram3d-view>
+    </div>
+    <div class="column big">
+        <div class="nonogram2d">
+            <app-nonogram2d 
+            #nonogram2dRef
+            [xOffset]="xOffset" 
+            [yOffset]="yOffset"
+            [fieldSize]="fieldSize"
+            [xFieldsLimit]="xFieldsLimit"
+            [yFieldsLimit]="yFieldsLimit"
+            [xToken]="tokenX"
+            [yToken]="tokenY"
+            [model]="nonogram2d"
+            (fieldSelected)="onFieldSelected($event)"
+            (leftRuleSelected)="onLeftRuleSelected($event)"
+            (upRuleSelected)="onUpRuleSelected($event)"
+            (click)="onClick()"
+            (contextmenu)="rightClick()"
+            ></app-nonogram2d>
+        </div>
+        <input type="range" style="display: block"
+        min="17"
+        max="70"
+        [ngModel]="fieldSize"
+        (ngModelChange)="onFiledSizeChange($event)"
+        />
+    </div>
+    <div class="column last">
+        <app-rules-list
+        #rulesListRef
+        [nonogramNd]="nonogramnd"
+        [fieldCoordinates]="selectedNdField == null ? tokenNd : selectedNdField"
+        [backlighted]="[dimensionAsX,dimensionAsY]"
+        [canAdd]="tokenNd != null && selectedNdField == null"
+        (ruleClick)="onEditRulesDialog($event)"
+        ></app-rules-list>
+        <app-palette
+        [colors]="nonogramnd.colors"
+        [(selection)]="selectedColor"
+        [isGame]="isGame"
+        [numberActive]="showTextDialog"
+        (colorModify)="onUpdateColor()"
+        (colorRemove)="onColorRemove($event)"
+        ></app-palette>
+        <app-nonogram-minimap
+        #nonogrmaMinimapRef
+        *ngIf="xFieldsLimit != nonogram2d.upRules.length || yFieldsLimit != nonogram2d.leftRules.length"
+        [model]="nonogram2d"
+        [fieldSize]="11"
+        [xAreaSize]="xFieldsLimit"
+        [yAreaSize]="yFieldsLimit"
+        [(offsetX)]="xOffset"
+        [(offsetY)]="yOffset"
+        ></app-nonogram-minimap>
+    </div>
+</div>
+<app-textbox-dialog
+[(value)]="valueTextDialog"
+[positionX]="mouseX"
+[positionY]="mouseY"
+[selectStart]="startTextDailog"
+[selectEnd]="endTextDailog"
+[show]="showTextDialog"
+(showChange)="updateRulesFormDialog($event)"
+></app-textbox-dialog>

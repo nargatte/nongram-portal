@@ -1,0 +1,27 @@
+<input type="button" *ngIf="isGame == false && numberActive == false && colors.length > 2"
+(click)="removeActive = !removeActive"
+value="usuń kolor"
+[class.active]="removeActive"/>
+<ul>
+  <li *ngFor="let color of colors; let idx = index"
+  #ignoredInput
+  [style.background]="color.stringFormat" 
+  [colorPicker]="color.stringFormat"
+  (colorPickerChange)="color.stringFormat=$event; colorModify.emit([idx, color])"
+  [cpAlphaChannel]="'disabled'"
+  [cpOutputFormat]="'rgba'"
+  [class.selectedOne]="selectedSet.size == 1 && selectedSet.has(idx) && removeActive == false && numberActive == false"
+  [class.selectedMany]="selectedSet.size > 1 && selectedSet.has(idx) && removeActive == false && numberActive == false"
+  [class.numberActive]="numberActive"
+  (click)="leftClickNthColor(idx, $event)"
+  (contextmenu)="rightClickNthColor(idx, $event)"
+  [cpIgnoredElements]="[ignoredButton, ignoredInput]"
+  [cpToggle]="colorPickerSelect == idx"
+  (cpToggleChange)="cpToggleChange($event)">{{numberActive ? idx : ''}}{{removeActive ? 'X' : ''}}
+  </li>
+  <li 
+  class="addButton" 
+  *ngIf="isGame == false && numberActive == false && colors.length < 8 && removeActive == false"
+  (click)="addColor()">+</li>
+  <li style="clear: both; width: 0; height: 0;"></li>
+</ul>
